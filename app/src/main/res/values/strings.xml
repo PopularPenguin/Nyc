@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">New York SAT Scores</string>
+
+    <string name="school_list_label">School List (Scroll and select to display SAT scores)</string>
+    <string name="sat_scores_label">SAT Scores</string>
+
+    <string name="school_name">School</string>
+    <string name="math">Math</string>
+    <string name="reading">Reading</string>
+    <string name="writing">Writing</string>
+    <string name="no_data">No school selected or no SAT data found for selected school.</string>
+</resources>
