@@ -15,18 +15,18 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSatScores(vararg scores: SatScores)
 
-    @Query("SELECT * FROM school")
+    @Query("SELECT * FROM school ORDER BY dbn")
     suspend fun getSchools(): List<School>
 
-    @Query("SELECT * FROM satScores")
+    @Query("SELECT * FROM satScores ORDER BY dbn")
     suspend fun getAllSatScores(): List<SatScores>
 
-    @Query("SELECT * FROM satScores WHERE name LIKE :schoolName")
-    suspend fun getSatScores(schoolName: String): SatScores
+    @Query("SELECT * FROM satScores WHERE dbn LIKE :dbn")
+    suspend fun getSatScores(dbn: String): SatScores
 
-    @Query("SELECT * FROM school INNER JOIN satScores ON satScores.dbn = school.dbn")
+    @Query("SELECT * FROM school INNER JOIN satScores ON satScores.dbn = school.dbn ORDER BY dbn")
     suspend fun getMatchingSchools(): List<School>
 
-    @Query("SELECT * FROM satScores INNER JOIN school ON satScores.dbn = school.dbn")
+    @Query("SELECT * FROM satScores INNER JOIN school ON satScores.dbn = school.dbn ORDER BY dbn")
     suspend fun getMatchingSatScores(): List<SatScores>
 }
