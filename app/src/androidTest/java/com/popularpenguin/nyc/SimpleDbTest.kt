@@ -85,4 +85,18 @@ class SimpleDbTest {
         assertEquals(school1.dbn, scoresToTest1.dbn)
         assertEquals(school2.dbn, scoresToTest2.dbn)
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun insertAndReadEmptyList() = runTest {
+        appDao.insertSchools()
+        appDao.insertSatScores()
+
+        val emptySchoolList = appDao.getSchools()
+        val emptyScoresList = appDao.getAllSatScores()
+
+        // ensure that you get an empty list and not an exception if no data
+        assertTrue(emptySchoolList.isEmpty())
+        assertTrue(emptyScoresList.isEmpty())
+    }
 }
